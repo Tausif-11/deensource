@@ -42,18 +42,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const name = (document.getElementById('name') || {}).value || '';
-      const email = (document.getElementById('email') || {}).value || '';
-      const title = (document.getElementById('title') || {}).value || '';
+      const contact = (document.getElementById('contact') || {}).value || '';
       const body = (document.getElementById('body') || {}).value || '';
       const msg = document.getElementById('form-message');
 
       // simple validation
       const errors = [];
-      if (!name.trim()) errors.push('Please enter your name.');
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.push('Please enter a valid email.');
-      if (!title.trim()) errors.push('Please enter a short title for your question.');
-      if (!body.trim()) errors.push('Please provide details for your question.');
+      if (!contact.trim()) errors.push('Please enter your Instagram ID or email.');
+      if (!body.trim()) errors.push('Please provide your question.');
 
       if (errors.length) {
         msg.innerHTML = errors.map(e => `<div>${e}</div>`).join('');
@@ -63,12 +59,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // simulate async submit
-      msg.textContent = 'Thanks — your question was accepted locally (demo).';
+      // Simulate submission and animated success message
+      msg.innerHTML = '<strong>Thank you.</strong> You will get your answer through email or Instagram DM.<br/>Your answer will also be displayed in the Response section within 24 hours.';
       msg.classList.remove('hidden');
       msg.classList.remove('text-red-600');
-      msg.classList.add('text-green-600');
+      msg.classList.add('text-green-400');
+      msg.classList.add('fade');
       form.reset();
+      // keep the message visible for a few seconds then fade
+      setTimeout(() => {
+        msg.classList.add('opacity-0');
+        setTimeout(() => msg.classList.add('hidden'), 400);
+      }, 5000);
     });
   }
 
@@ -80,4 +82,68 @@ document.addEventListener('DOMContentLoaded', function () {
       msg.classList.add('hidden');
     }
   });
+
+  // Response page: load responses.json, render cards, filters and search
+  async function loadResponses() {
+    const grid = document.getElementById('responses-grid');
+    const search = document.getElementById('search');
+    const filter = document.getElementById('topic-filter');
+    if (!grid) return;
+    try {
+      const res = await fetch('/data/responses.json');
+      const data = await res.json();
+      let items = data;
+
+      // populate filter options
+      const topics = Array.from(new Set(data.map(d => d.topic)));
+      topics.forEach(t => {
+        const opt = document.createElement('option'); opt.value = t; opt.textContent = t; filter.appendChild(opt);
+      });
+
+      function render(list) {
+        grid.innerHTML = '';
+        if (!list.length) {
+          grid.innerHTML = '<div class="text-gray-400">No responses found.</div>';
+          return;
+        }
+        list.forEach(item => {
+          const el = document.createElement('article');
+          el.className = 'card-dark';
+          el.innerHTML = `<h3 class="font-semibold text-white">${item.question}</h3><div class="mt-3 text-gray-300">${item.answer}</div><div class="mt-4 text-xs text-gray-400">Topic: ${item.topic}</div>`;
+          grid.appendChild(el);
+        });
+      }
+
+      render(items);
+
+      // live search
+      search.addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        const topic = filter.value;
+        const filtered = data.filter(d => (topic === 'all' || d.topic === topic) && (d.question.toLowerCase().includes(q) || d.answer.toLowerCase().includes(q)));
+        render(filtered);
+      });
+
+      filter.addEventListener('change', function () {
+        const q = search.value.toLowerCase();
+        const topic = this.value;
+        const filtered = data.filter(d => (topic === 'all' || d.topic === topic) && (d.question.toLowerCase().includes(q) || d.answer.toLowerCase().includes(q)));
+        render(filtered);
+      });
+
+    } catch (e) {
+      console.warn('Failed to load responses.json', e);
+    }
+  }
+
+  loadResponses();
+
+  // Scroll-to-top button
+  const scrollBtn = document.getElementById('scroll-top');
+  if (scrollBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) scrollBtn.classList.remove('hidden'); else scrollBtn.classList.add('hidden');
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 });

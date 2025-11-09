@@ -17,48 +17,25 @@
     <main class="max-w-3xl mx-auto px-6 py-12">
       <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-deen-dark">Ask a question</h1>
 
-      <form id="ask-form" class="space-y-6 bg-white p-6 rounded-xl shadow">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name"
-              class="mt-1 block w-full rounded-md border border-gray-200 shadow-sm p-2 focus:border-deen-mid focus:ring-deen-mid" />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com"
-              class="mt-1 block w-full rounded-md border border-gray-200 shadow-sm p-2 focus:border-deen-mid focus:ring-deen-mid" />
-          </div>
+  <form id="ask-form" class="space-y-6 bg-slate-800 p-6 rounded-xl shadow-soft-md">
+        <div>
+          <label for="contact" class="block text-sm font-medium text-gray-300">Instagram ID or Email</label>
+          <input id="contact" name="contact" type="text" placeholder="@yourhandle or you@example.com"
+            class="mt-1 block w-full rounded-md bg-slate-900 border border-slate-700 text-gray-100 p-2 focus:border-deen-mid focus:ring-deen-mid" />
         </div>
 
         <div>
-          <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-          <input id="title" name="title" type="text" placeholder="Short concise title" required
-            class="mt-1 block w-full rounded-md border border-gray-200 shadow-sm p-2 focus:border-deen-mid focus:ring-deen-mid" />
-        </div>
-
-        <div>
-          <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-          <select id="category" name="category" class="mt-1 block w-full rounded-md border border-gray-200 p-2">
-            <option value="general">General</option>
-            <option value="fiqh">Fiqh</option>
-            <option value="aqidah">Aqidah</option>
-            <option value="seerah">Seerah</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="body" class="block text-sm font-medium text-gray-700">Details</label>
-          <textarea id="body" name="body" rows="6" placeholder="Describe your question in detail"
-            class="mt-1 block w-full rounded-md border border-gray-200 shadow-sm p-2 focus:border-deen-mid focus:ring-deen-mid"></textarea>
+          <label for="body" class="block text-sm font-medium text-gray-300">Your Question</label>
+          <textarea id="body" name="body" rows="6" placeholder="Write your question here"
+            class="mt-1 block w-full rounded-md bg-slate-900 border border-slate-700 text-gray-100 p-3 focus:border-deen-mid focus:ring-deen-mid"></textarea>
         </div>
 
         <div class="flex items-center justify-between">
-          <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-deen-mid text-white rounded-md hover:bg-deen-dark">Submit question</button>
-          <a href="/" class="text-sm text-gray-500">← Back</a>
+          <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 btn-gold">Submit question</button>
+          <a href="/" class="text-sm text-gray-400">← Back</a>
         </div>
 
-        <div id="form-message" class="text-sm hidden"></div>
+        <div id="form-message" class="text-sm hidden text-green-400"></div>
       </form>
     </main>
 

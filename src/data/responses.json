@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "question": "What are the essentials of Zakat?",
+    "answer": "Zakat is due on specific types of wealth when nisab and haul conditions are met. The essentials include intention, eligible assets, and paying to entitled categories.",
+    "topic": "Fiqh"
+  },
+  {
+    "id": 2,
+    "question": "How should I prepare for prayer?",
+    "answer": "Prepare by ensuring purity (wudu), covering awrah, facing the qibla, and focusing the heart on the remembrance of Allah.",
+    "topic": "Practical"
+  },
+  {
+    "id": 3,
+    "question": "What is the recommended etiquette for seeking knowledge?",
+    "answer": "Seek knowledge sincerely, with humility, verify sources, and consult qualified teachers when possible.",
+    "topic": "Etiquette"
+  }
+]
