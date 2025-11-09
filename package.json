@@ -1,0 +1,19 @@
+{
+  "name": "deensource-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/assets/css/styles.css -o ./public/styles.css --watch",
+  "build": "npm run build:copy && npx tailwindcss -i ./src/assets/css/styles.css -o ./public/styles.css --minify",
+    "build:copy": "npx copyfiles -u 1 \"src/**/*.{html,js,css}\" public",
+    "start": "npx http-server ./public -c-1 -p 3000",
+    "deploy": "npm run build && git add . && git commit -m \"chore(deploy): build and prepare deploy\" || true && git push origin main || echo \"git push failed (no remote or auth). Add remote or push manually.\""
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "copyfiles": "^2.4.1",
+    "http-server": "latest",
+    "postcss": "latest",
+    "tailwindcss": "^3.4.7"
+  }
+}
