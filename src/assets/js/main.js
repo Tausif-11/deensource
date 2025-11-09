@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Ask form handling (Name, Email, Question)
   const form = document.getElementById('ask-form');
   if (form) {
-    form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const contact = (document.getElementById('contact') || {}).value || '';
       const body = (document.getElementById('body') || {}).value || '';
@@ -59,8 +59,20 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Simulate submission and animated success message
-      msg.innerHTML = '<strong>Thank you.</strong> You will get your answer through email or Instagram DM.<br/>Your answer will also be displayed in the Response section within 24 hours.';
+      // Attempt to POST to /api/ask (Vercel function). Fallback to local demo if network fails.
+      const payload = { contact, question: body };
+      try {
+        const response = await fetch('/api/ask', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('network');
+        const json = await response.json();
+        msg.innerHTML = `<strong>Thank you.</strong> Your question was received (demo). Message id: ${json.payload && json.payload.id ? json.payload.id : ''}. You will get your answer through email or Instagram DM.`;
+      } catch (err) {
+        // fallback message
+        msg.innerHTML = '<strong>Thank you.</strong> You will get your answer through email or Instagram DM. (demo fallback)';
+      }
+
       msg.classList.remove('hidden');
       msg.classList.remove('text-red-600');
       msg.classList.add('text-green-400');

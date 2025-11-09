@@ -31,3 +31,26 @@
   .card-dark { @apply bg-gradient-to-br from-charcoal via-slate to-deen-mid/5 rounded-xl p-5 shadow-soft-md }
   .btn-gold { @apply inline-flex items-center gap-2 px-4 py-2 rounded-md text-black bg-gradient-to-r from-deen-gold to-yellow-500 hover:from-yellow-400 hover:to-yellow-400 }
 }
+
+/* Hero gradient and responsive typography tweaks */
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(90deg, #fbbf24 0%, #ffd166 30%, #86efac 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lead {
+    line-height: 1.8;
+    color: rgba(203,213,225,0.9);
+  }
+
+  /* Responsive heading sizes */
+  .h-display { font-size: 1.9rem; line-height:1.05; }
+  @media (min-width:640px){ .h-display { font-size:2.6rem } }
+  @media (min-width:1024px){ .h-display { font-size:3rem } }
+}
+
+/* Arabic ornament helper */
+.ornament { opacity:.12; filter: blur(.2px); }
