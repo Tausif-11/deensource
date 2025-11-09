@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!response.ok) throw new Error('network');
         const json = await response.json();
         msg.innerHTML = `<strong>Thank you.</strong> Your question was received (demo). Message id: ${json.payload && json.payload.id ? json.payload.id : ''}. You will get your answer through email or Instagram DM.`;
+        // Optionally update local UI or push the new question into responses grid if desired
       } catch (err) {
         // fallback message
         msg.innerHTML = '<strong>Thank you.</strong> You will get your answer through email or Instagram DM. (demo fallback)';
