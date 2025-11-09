@@ -3,14 +3,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // DeenSource brand palette (adjustable)
+        // DeenSource brand palette (finalized)
         deen: {
-          DEFAULT: '#0f766e', // teal-700 like
-          light: '#34d399',
-          dark: '#064e3b'
-        },
-        accent: {
-          DEFAULT: '#0ea5a4'
+          dark: '#14532d',
+          mid: '#15803d',
+          light: '#86efac',
+          gold: '#fbbf24'
         }
       }
     },
