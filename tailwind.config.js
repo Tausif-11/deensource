@@ -10,6 +10,9 @@ module.exports = {
           light: '#86efac',
           gold: '#fbbf24'
         }
+        ,
+        // Light cream background used site-wide
+        cream: '#fefce8'
       }
     },
   },

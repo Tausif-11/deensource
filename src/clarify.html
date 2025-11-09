@@ -4,15 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>DeenSource — Clarify</title>
-  <link rel="stylesheet" href="../public/styles.css">
-  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2315803d'/><text x='50' y='65' font-size='60' text-anchor='middle' fill='white'>D</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20251109">
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2314532d'/><text x='50' y='65' font-size='60' text-anchor='middle' fill='white'>D</text></svg>">
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900">
-    <div class="max-w-4xl mx-auto px-6 py-12">
-      <h1 class="text-3xl font-bold mb-4">Clarify</h1>
-      <p class="text-gray-700">Clarifications and follow-ups placeholder.</p>
-      <p class="mt-6"><a href="index.html" class="text-blue-600">← Back</a></p>
-    </div>
-    <script src="assets/js/main.js"></script>
+  <body class="min-h-screen bg-cream text-gray-800" style="font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
+
+    <div data-include="/includes/navbar.html"></div>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-deen-dark">Clarify — common questions</h1>
+
+      <div class="space-y-4">
+        <details class="bg-white p-4 rounded-lg shadow">
+          <summary class="font-semibold">Is fasting required if I am sick?</summary>
+          <div class="mt-2 text-gray-600">If illness prevents safe fasting, a person may break the fast and make it up later; consult a scholar for individual cases.</div>
+        </details>
+
+        <details class="bg-white p-4 rounded-lg shadow">
+          <summary class="font-semibold">Can I combine prayers while traveling?</summary>
+          <div class="mt-2 text-gray-600">Many schools permit combining certain prayers when traveling; check the details of your madhhab or follow a trusted contemporary ruling.</div>
+        </details>
+
+        <details class="bg-white p-4 rounded-lg shadow">
+          <summary class="font-semibold">What is the etiquette for seeking knowledge?</summary>
+          <div class="mt-2 text-gray-600">Sincerity, verified sources, and humility are essential. Prefer primary texts and qualified teachers.</div>
+        </details>
+      </div>
+
+      <p class="mt-8"><a href="/" class="text-gray-600">← Back to Home</a></p>
+    </main>
+
+    <div data-include="/includes/footer.html"></div>
+
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
