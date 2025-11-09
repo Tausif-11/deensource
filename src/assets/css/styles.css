@@ -54,3 +54,21 @@
 
 /* Arabic ornament helper */
 .ornament { opacity:.12; filter: blur(.2px); }
+
+/* Responsive refinements */
+@layer utilities {
+  /* Make lead text slightly larger on small screens for readability */
+  .lead { font-size: 0.98rem; }
+  @media (min-width:640px){ .lead { font-size: 1.05rem } }
+
+  /* Slightly more breathing room for hero */
+  .hero-outer { padding-top: 2.25rem; padding-bottom: 2.25rem; }
+
+  /* Card spacing adjustments */
+  .card-dark { padding: 1.25rem; }
+  @media (min-width:768px){ .card-dark { padding: 1.5rem } }
+
+  /* Grid gap increases on larger screens */
+  .responsive-grid { gap: 1rem; }
+  @media (min-width:640px){ .responsive-grid { gap: 1.25rem } }
+}
